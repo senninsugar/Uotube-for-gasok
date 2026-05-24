@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOWTube 読み込み実行</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="うおtube,仙人tube,学校,公民,youtube,規制突破">
+
+    <meta property="og:title" content="うおtube">
+    <meta property="og:description" content="公民学習サイトです。さまざまな学年やテスとに対応しています。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <meta property="og:site_name" content="UOWTube">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="学習しよう">
+    <meta name="twitter:description" content="公民ができるように!?">
+    <meta name="twitter:image" content="https://example.com/og-image.jpg">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <div id="app">URLの内容を読み込んでいます...</div>
+
+    <script>
+        const url = 'https://cdn.jsdelivr.net/gh/xianrentesuchi-bit/uowtube-html@main/index.html';
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('ネットワークエラーまたはファイルが見つかりません');
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.open();
+                document.write(html);
+                document.close();
+            })
+            .catch(error => {
+                document.getElementById('app').innerText = 'エラーが発生しました: ' + error.message;
+                console.error(error);
+            });
+    </script>
+</body>
+</html>
